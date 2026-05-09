@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — Angad Singh Dhawan</title>
+<meta name="description" content="AI, technology, leadership, and community insights from Angad Singh Dhawan — GMU AI Club VP, MIS graduate.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<style>
+:root,[data-theme="light"]{
+  --bg:#f7f6f2;--surf:#f9f8f5;--surf2:#fbfbf9;--surfoff:#f0ede8;--surfdyn:#e6e4df;--div:#dcd9d5;--bord:#d4d1ca;
+  --tx:#28251d;--txm:#6e6b64;--txf:#b5b3ae;
+  --pr:#01696f;--prh:#0c4e54;--prhl:#c8dbd9;
+  --sh1:0 1px 2px oklch(0.2 0.01 80/.06);--sh2:0 4px 12px oklch(0.2 0.01 80/.09);--sh3:0 12px 40px oklch(0.2 0.01 80/.13);
+  --r1:.375rem;--r2:.5rem;--r3:.75rem;--r4:1rem;--r5:1.5rem;--rf:9999px;--tr:180ms cubic-bezier(0.16,1,0.3,1);
+  --fd:'Space Grotesk','Helvetica Neue',sans-serif;--fb:'Plus Jakarta Sans','Helvetica Neue',sans-serif;
+  --xs:clamp(.75rem,.7rem + .25vw,.875rem);--sm:clamp(.875rem,.8rem + .35vw,1rem);
+  --bs:clamp(1rem,.95rem + .25vw,1.125rem);--lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+  --xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);--2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);--hero:clamp(2.4rem,.5rem + 6vw,5.5rem);
+  --cw:960px;--cww:1200px;
+  --s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.25rem;--s6:1.5rem;--s8:2rem;--s10:2.5rem;--s12:3rem;--s16:4rem;--s20:5rem;
+}
+[data-theme="dark"]{
+  --bg:#0c0b0a;--surf:#141312;--surf2:#1a1917;--surfoff:#1e1d1b;--surfdyn:#272523;--div:#222120;--bord:#2e2d2b;
+  --tx:#d2d0cd;--txm:#7a7875;--txf:#4a4947;--pr:#4f9ea8;--prh:#3a8a95;--prhl:#162a2d;
+  --sh1:0 1px 2px oklch(0 0 0/.3);--sh2:0 4px 16px oklch(0 0 0/.4);--sh3:0 16px 48px oklch(0 0 0/.6);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){
+  --bg:#0c0b0a;--surf:#141312;--surf2:#1a1917;--surfoff:#1e1d1b;--surfdyn:#272523;--div:#222120;--bord:#2e2d2b;
+  --tx:#d2d0cd;--txm:#7a7875;--txf:#4a4947;--pr:#4f9ea8;--prh:#3a8a95;--prhl:#162a2d;
+  --sh1:0 1px 2px oklch(0 0 0/.3);--sh2:0 4px 16px oklch(0 0 0/.4);--sh3:0 16px 48px oklch(0 0 0/.6);
+}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;}
+body{font-family:var(--fb);font-size:var(--bs);color:var(--tx);background:var(--bg);min-height:100dvh;line-height:1.65;overflow-x:hidden;}
+img{display:block;max-width:100%;height:auto;}
+h1,h2,h3,h4{text-wrap:balance;line-height:1.2;}
+p,li{text-wrap:pretty;max-width:72ch;}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit;}
+a{color:inherit;text-decoration:none;}
+::selection{background:oklch(from var(--pr) l c h/.25);}
+:focus-visible{outline:2px solid var(--pr);outline-offset:3px;border-radius:var(--r1);}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}}
+
+/* OPTION D: ENHANCED PARTICLE NETWORK + ORB PARALLAX */
+#blog-bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;}
+.blog-orb{position:fixed;border-radius:9999px;filter:blur(110px);pointer-events:none;z-index:0;animation:blogOrb 26s ease-in-out infinite;transition:transform .08s linear;}
+.borb1{width:38vw;height:38vw;max-width:440px;max-height:440px;top:-5%;left:-12%;background:color-mix(in oklch,var(--pr) 60%,transparent);opacity:.2;}
+.borb2{width:30vw;height:30vw;max-width:360px;max-height:360px;right:-10%;bottom:8%;background:color-mix(in oklch,#7a39bb 45%,var(--pr) 55%);opacity:.18;animation-delay:-11s;}
+.borb3{width:24vw;height:24vw;max-width:280px;max-height:280px;left:35%;top:55%;background:color-mix(in oklch,#2563eb 40%,var(--pr) 60%);opacity:.11;animation-delay:-17s;}
+[data-theme="dark"] .borb1{opacity:.32;}[data-theme="dark"] .borb2{opacity:.26;}[data-theme="dark"] .borb3{opacity:.16;}
+@keyframes blogOrb{0%,100%{transform:translate3d(0,0,0) scale(1);}30%{transform:translate3d(18px,-22px,0) scale(1.05);}65%{transform:translate3d(-12px,14px,0) scale(.96);}}
+.blog-grain{position:fixed;inset:0;z-index:0;pointer-events:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.025;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:oklch(from var(--bg) l c h/.9);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);border-bottom:1px solid var(--div);}
+.nav-inner{max-width:var(--cww);margin-inline:auto;padding:var(--s3) var(--s6);display:flex;align-items:center;justify-content:flex-end;gap:var(--s4);}
+.nav-links{display:flex;align-items:center;gap:var(--s2);list-style:none;}
+.nav-links a{font-size:var(--xs);font-weight:600;color:var(--txm);padding:var(--s2) var(--s4);border-radius:var(--rf);border:1px solid transparent;transition:all var(--tr);}
+.nav-links a:hover{color:var(--tx);border-color:var(--bord);}
+.nav-links a.active{color:var(--pr);border-color:oklch(from var(--pr) l c h/.35);background:var(--prhl);}
+.nav-links a.solid{background:var(--pr);color:#fff;border-color:var(--pr);}
+.nav-links a.solid:hover{background:var(--prh);}
+.nav-links a.nav-home{padding:6px 8px;line-height:1;}
+.themetog{width:34px;height:34px;display:flex;align-items:center;justify-content:center;border-radius:var(--rf);background:var(--surf);border:1px solid var(--bord);color:var(--txm);transition:all var(--tr);}
+.themetog:hover{background:var(--surfdyn);color:var(--tx);}
+
+/* PAGE HEADER */
+.page-header{position:relative;overflow:hidden;min-height:clamp(320px,45vw,520px);display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:var(--s16) var(--s6) var(--s12);max-width:var(--cww);margin-inline:auto;gap:var(--s8);}
+.header-text{position:relative;z-index:2;}
+.header-label{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--pr);margin-bottom:var(--s4);}
+.header-title{font-family:var(--fd);font-size:clamp(2.6rem,5vw,4.5rem);font-weight:700;color:var(--tx);line-height:1.0;letter-spacing:-.03em;margin-bottom:var(--s5);}
+.header-tagline{color:var(--txm);font-size:var(--sm);line-height:1.7;max-width:42ch;margin-bottom:var(--s8);}
+.header-stats{display:flex;gap:var(--s6);}
+.h-stat{display:flex;flex-direction:column;gap:2px;}
+.h-stat-num{font-family:var(--fd);font-size:var(--xl);font-weight:700;color:var(--pr);line-height:1;}
+.h-stat-lbl{font-size:var(--xs);color:var(--txf);text-transform:uppercase;letter-spacing:.06em;}
+.globe-wrap{position:relative;display:flex;align-items:center;justify-content:center;}
+#dot-globe{display:block;}
+@media(max-width:900px){
+  .page-header{grid-template-columns:1fr;min-height:auto;padding-top:var(--s12);}
+  .globe-wrap{display:none;}
+}
+
+/* LAYOUT */
+.cont{max-width:var(--cw);margin-inline:auto;}
+.contw{max-width:var(--cww);margin-inline:auto;}
+section{padding:clamp(var(--s10),5vw,var(--s16)) var(--s6);}
+hr.div{border:none;border-top:1px solid var(--div);}
+.section-label{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--pr);margin-bottom:var(--s3);}
+.section-title{font-family:var(--fd);font-size:var(--xl);font-weight:700;color:var(--tx);margin-bottom:var(--s8);letter-spacing:-.02em;}
+
+/* FEATURED POST */
+.featured-post{background:var(--surf);border:1px solid oklch(from var(--tx) l c h/.07);border-radius:var(--r5);overflow:hidden;margin-bottom:var(--s8);display:grid;grid-template-columns:1fr 1.2fr;transition:all var(--tr);cursor:pointer;}
+.featured-post:hover{box-shadow:var(--sh3);transform:translateY(-2px);}
+.featured-img{background:var(--surfoff);min-height:280px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.featured-img img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.featured-img-ph{display:flex;flex-direction:column;align-items:center;gap:var(--s3);color:var(--txf);}
+.featured-img-ph span{font-size:var(--xs);text-align:center;}
+.featured-body{padding:var(--s8) var(--s10);}
+.post-cat{display:inline-flex;align-items:center;gap:var(--s2);font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--pr);background:var(--prhl);padding:var(--s1) var(--s3);border-radius:var(--rf);margin-bottom:var(--s4);}
+.featured-body h2{font-family:var(--fd);font-size:var(--2xl);font-weight:700;color:var(--tx);line-height:1.1;margin-bottom:var(--s4);letter-spacing:-.02em;}
+.featured-body p{color:var(--txm);line-height:1.7;margin-bottom:var(--s5);}
+.post-meta{display:flex;align-items:center;gap:var(--s4);font-size:var(--xs);color:var(--txf);}
+.post-meta-item{display:flex;align-items:center;gap:var(--s2);}
+.read-more{display:inline-flex;align-items:center;gap:var(--s2);font-size:var(--sm);font-weight:700;color:var(--pr);margin-top:var(--s5);transition:gap var(--tr);}
+.read-more:hover{gap:var(--s4);}
+@media(max-width:768px){.featured-post{grid-template-columns:1fr;}.featured-img{min-height:200px;}.featured-body{padding:var(--s6);}.featured-body h2{font-size:var(--xl);}}
+
+/* POST GRID */
+.posts-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:var(--s5);}
+.post-card{background:var(--surf);border:1px solid oklch(from var(--tx) l c h/.07);border-radius:var(--r4);overflow:hidden;transition:all var(--tr);display:flex;flex-direction:column;cursor:pointer;}
+.post-card:hover{box-shadow:var(--sh2);transform:translateY(-2px);}
+.post-card-img{aspect-ratio:16/9;background:var(--surfoff);overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;}
+.post-card-img img{width:100%;height:100%;object-fit:cover;transition:transform .5s cubic-bezier(0.16,1,0.3,1);}
+.post-card:hover .post-card-img img{transform:scale(1.04);}
+.post-card-img-ph{display:flex;flex-direction:column;align-items:center;gap:var(--s2);color:var(--txf);}
+.post-card-img-ph span{font-size:var(--xs);}
+.post-card-body{padding:var(--s5);flex:1;display:flex;flex-direction:column;}
+.post-card-cat{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--pr);margin-bottom:var(--s2);}
+.post-card h3{font-family:var(--fd);font-size:var(--lg);font-weight:700;color:var(--tx);margin-bottom:var(--s2);line-height:1.25;letter-spacing:-.01em;}
+.post-card p{font-size:var(--sm);color:var(--txm);line-height:1.65;flex:1;}
+.post-card-footer{display:flex;justify-content:space-between;align-items:center;margin-top:var(--s4);padding-top:var(--s4);border-top:1px solid var(--div);}
+.post-card-date{font-size:var(--xs);color:var(--txf);}
+.post-tag{font-size:var(--xs);background:var(--surfoff);color:var(--txm);border-radius:var(--rf);padding:2px var(--s2);}
+
+/* LINKEDIN */
+.linkedin-section{background:var(--surf);}
+.li-grid{display:grid;gap:var(--s4);margin-top:var(--s8);}
+.li-post{background:var(--bg);border:1px solid oklch(from var(--tx) l c h/.07);border-radius:var(--r4);padding:var(--s6);transition:all var(--tr);}
+.li-post:hover{box-shadow:var(--sh1);border-color:oklch(from var(--pr) l c h/.25);}
+.li-post-header{display:flex;align-items:center;gap:var(--s4);margin-bottom:var(--s4);}
+.li-avatar{width:44px;height:44px;border-radius:var(--rf);background:var(--prhl);display:flex;align-items:center;justify-content:center;flex-shrink:0;overflow:hidden;border:2px solid oklch(from var(--pr) l c h/.3);}
+.li-avatar img{width:100%;height:100%;object-fit:cover;}
+.li-avatar-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;color:var(--pr);}
+.li-name{font-size:var(--sm);font-weight:600;color:var(--tx);}
+.li-handle{font-size:var(--xs);color:var(--txf);}
+.li-post-text{font-size:var(--sm);color:var(--txm);line-height:1.7;white-space:pre-wrap;}
+.li-post-footer{display:flex;align-items:center;justify-content:space-between;margin-top:var(--s5);padding-top:var(--s4);border-top:1px solid var(--div);}
+.li-date{font-size:var(--xs);color:var(--txf);}
+.li-open{display:inline-flex;align-items:center;gap:var(--s2);font-size:var(--xs);font-weight:600;color:var(--pr);transition:gap var(--tr);}
+.li-open:hover{gap:var(--s3);}
+.li-tags{display:flex;flex-wrap:wrap;gap:var(--s2);margin-top:var(--s3);}
+.li-tag{font-size:var(--xs);background:var(--prhl);color:var(--pr);border-radius:var(--rf);padding:2px var(--s2);}
+
+/* MODAL */
+.modal-overlay{position:fixed;inset:0;z-index:500;background:oklch(0 0 0/.72);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:var(--s4);opacity:0;pointer-events:none;transition:opacity .3s;}
+.modal-overlay.open{opacity:1;pointer-events:all;}
+.modal{background:var(--surf);border:1px solid var(--bord);border-radius:var(--r5);max-width:720px;width:100%;max-height:90svh;overflow-y:auto;padding:var(--s8) var(--s10);position:relative;transform:scale(.96) translateY(12px);transition:transform .35s cubic-bezier(0.16,1,0.3,1);}
+.modal-overlay.open .modal{transform:scale(1) translateY(0);}
+.modal-close{position:sticky;top:0;float:right;width:32px;height:32px;display:flex;align-items:center;justify-content:center;background:var(--surfoff);border-radius:var(--rf);color:var(--txm);transition:all var(--tr);}
+.modal-close:hover{background:var(--surfdyn);color:var(--tx);}
+.modal-cat{font-size:var(--xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--pr);margin-bottom:var(--s3);}
+.modal h2{font-family:var(--fd);font-size:var(--xl);font-weight:700;color:var(--tx);margin-bottom:var(--s4);line-height:1.2;letter-spacing:-.02em;}
+.modal-meta{font-size:var(--xs);color:var(--txf);margin-bottom:var(--s6);}
+.modal-body{font-size:var(--bs);color:var(--txm);line-height:1.8;}
+.modal-body p{margin-bottom:var(--s4);}
+.modal-body strong{color:var(--tx);}
+@media(max-width:640px){.modal{padding:var(--s5) var(--s5);}}
+
+/* FOOTER */
+footer{border-top:1px solid var(--div);padding:var(--s8) var(--s6);}
+.foot-inner{max-width:var(--cw);margin-inline:auto;display:flex;justify-content:space-between;align-items:center;gap:var(--s4);flex-wrap:wrap;}
+.foot-links{display:flex;gap:var(--s5);}
+.foot-links a{font-size:var(--xs);color:var(--txf);transition:color var(--tr);}
+.foot-links a:hover{color:var(--pr);}
+.foot-copy{font-size:var(--xs);color:var(--txf);}
+
+/* SCROLL FADE */
+.fi{opacity:0;transform:translateY(14px);transition:opacity .55s var(--tr),transform .55s var(--tr);}
+.fi.vis{opacity:1;transform:none;}
+
+/* BTN */
+.btn{display:inline-flex;align-items:center;gap:var(--s2);padding:var(--s3) var(--s6);border-radius:var(--r3);font-size:var(--sm);font-weight:600;transition:all var(--tr);}
+.btn-ghost{border:1px solid var(--bord);color:var(--txm);}
+.btn-ghost:hover{border-color:oklch(from var(--pr) l c h/.5);color:var(--pr);background:var(--prhl);}
+</style>
+</head>
+<body>
+
+<canvas id="blog-bg-canvas" aria-hidden="true"></canvas>
+<div class="blog-orb borb1" aria-hidden="true"></div>
+<div class="blog-orb borb2" aria-hidden="true"></div>
+<div class="blog-orb borb3" aria-hidden="true"></div>
+<div class="blog-grain" aria-hidden="true"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="nav-home" title="Home" aria-label="Go to Home"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9.5z"/><path d="M9 21V12h6v9"/></svg></a></li>
+      <li><a href="blog.html" class="active">Blog</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="https://blinq.me/T3EyaGI2pJGJ7rfzTi6C?bs=db" target="_blank" rel="noopener noreferrer" class="solid">Connect</a></li>
+    </ul>
+    <button class="themetog" data-theme-toggle aria-label="Switch theme">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
+</nav>
+
+<!-- PAGE HEADER WITH DOT GLOBE -->
+<div class="page-header">
+  <div class="header-text">
+    <p class="header-label">Insights &amp; Blog</p>
+    <h1 class="header-title">Ideas that<br>move the<br>needle.</h1>
+    <p class="header-tagline">AI, leadership, tech, and community — dispatches from a builder figuring it out in public.</p>    <div class="header-stats">
+      <div class="h-stat"><div class="h-stat-num">12+</div><div class="h-stat-lbl">Articles</div></div>
+      <div class="h-stat"><div class="h-stat-num">AI</div><div class="h-stat-lbl">Focus</div></div>
+      <div class="h-stat"><div class="h-stat-num">GMU</div><div class="h-stat-lbl">MIS Grad</div></div>
+    </div>
+  </div>
+  <div class="globe-wrap">
+    <canvas id="dot-globe" aria-hidden="true"></canvas>
+  </div>
+</div>
+
+<hr class="div">
+
+<!-- ARTICLES -->
+<section id="articles">
+  <div class="cont">
+    <p class="section-label">Featured</p>
+    <h2 class="section-title">Latest insights.</h2>
+
+    <!-- FEATURED -->
+    <div class="featured-post fi" onclick="openModal('ai-day-coorg')" role="article" tabindex="0" onkeydown="if(event.key==='Enter')openModal('ai-day-coorg')">
+      <div class="featured-img">
+        <img src="blog-featured.jpg" alt="GMU AI Day" loading="eager" width="500" height="320"
+             onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="featured-img-ph" style="display:none;">
+          <i data-lucide="cpu" width="32" height="32"></i>
+          <span>blog-featured.jpg</span>
+        </div>
+      </div>
+      <div class="featured-body">
+        <span class="post-cat"><i data-lucide="users" width="12" height="12"></i> Leadership · Events</span>
+        <h2>Co-Organizing GMU's Inaugural AI Day: Uniting 7 Student Orgs Around One Mission</h2>
+        <p>I pitched the collaborative framework directly to Dr. Amarda Shehu, onboarded 7 student organizations, redesigned every promotional asset, and led day-of stage operations for the full 3-hour programming block at Mason Square, Arlington.</p>
+        <div class="post-meta">
+          <span class="post-meta-item"><i data-lucide="calendar" width="12" height="12"></i> April 2026</span>
+          <span class="post-meta-item"><i data-lucide="clock" width="12" height="12"></i> 5 min read</span>
+        </div>
+        <div class="read-more">Read full article <i data-lucide="arrow-right" width="14" height="14"></i></div>
+      </div>
+    </div>
+
+    <!-- POST GRID -->
+    <div class="posts-grid">
+
+      <article class="post-card fi" onclick="openModal('ai-governance')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('ai-governance')">
+        <div class="post-card-img">
+          <img src="blog-aiday.jpg" alt="GMU AI Day" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="cpu" width="24" height="24"></i><span>blog-aiday.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">AI &amp; Governance</div>
+          <h3>AI Literacy, Responsible Governance &amp; What GMU AI Day Taught Me</h3>
+          <p>Researchers, policymakers, students, and practitioners all in the same room — what I observed about AI literacy and workforce readiness was more valuable than any single presentation.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">March 2026</span>
+            <span class="post-tag">AI Policy</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('cybersecurity-forum')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('cybersecurity-forum')">
+        <div class="post-card-img">
+          <img src="blog-cyber.jpg" alt="Cybersecurity forum" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="shield" width="24" height="24"></i><span>blog-cyber.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">Leadership · Events</div>
+          <h3>What I Learned Standing on Stage in Front of 100 People</h3>
+          <p>Coordinating IBM, Maximus, and U.S. DOT executives while managing AV, catering, and registration taught me that event management is project management with zero tolerance for error.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">April 2026</span>
+            <span class="post-tag">Event Leadership</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('ama-marketing')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('ama-marketing')">
+        <div class="post-card-img">
+          <img src="blog-ama.jpg" alt="AMA Marketing Masterclass" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="megaphone" width="24" height="24"></i><span>blog-ama.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">AI · Marketing</div>
+          <h3>The AMA × AI Marketing Masterclass: Building Content Pipelines That Scale</h3>
+          <p>Co-hosted with Jonathan Harris, demonstrating live how OpusClip, Gemini Pro, and GPU-accelerated workflows turn raw recordings into algorithm-optimized marketing assets.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">April 2026</span>
+            <span class="post-tag">Content Strategy</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('ai-club-growth')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('ai-club-growth')">
+        <div class="post-card-img">
+          <img src="blog-aiclub.jpg" alt="AI Club" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="users" width="24" height="24"></i><span>blog-aiclub.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">Community · AI</div>
+          <h3>Building the GMU AI Club From the Ground Up</h3>
+          <p>How we went from weekly meetings to co-hosting workshops with PatriotHacks, partnering with AMA, and orchestrating the inaugural AI Day exhibition.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">March 2026</span>
+            <span class="post-tag">Student Leadership</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('club-tech-stack')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('club-tech-stack')">
+        <div class="post-card-img">
+          <img src="blog-techstack.jpg" alt="Club Tech Stack" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="layers" width="24" height="24"></i><span>blog-techstack.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">Operations · Technology</div>
+          <h3>Running a Student Org Like a Startup: Our Exact Tech Stack</h3>
+          <p>CapCut Pro, Perplexity, Canva Pro, Discord bots. The exact toolkit that gave the GMU AI Club a massive edge — and how we actually used each one.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">Spring 2026</span>
+            <span class="post-tag">Productivity</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('club-operations')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('club-operations')">
+        <div class="post-card-img">
+          <img src="blog-ops.jpg" alt="Club Operations" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="clipboard-list" width="24" height="24"></i><span>blog-ops.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">Operations · Leadership</div>
+          <h3>The Logistics Playbook: What Every Student Org Gets Wrong</h3>
+          <p>Never book Friday meetings. Lock 25live rooms months in advance. Deploy food strategically. The unglamorous operational wisdom behind every successful event we ran.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">Spring 2026</span>
+            <span class="post-tag">Club Strategy</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('trial-officer')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('trial-officer')">
+        <div class="post-card-img">
+          <img src="blog-leadership.jpg" alt="Leadership hiring" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="user-check" width="24" height="24"></i><span>blog-leadership.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">Leadership · Culture</div>
+          <h3>Why We Built a Trial Officer System (And Why You Should Too)</h3>
+          <p>Nobody gets a board title for interviewing well. Every candidate must complete a real challenge first. The framework that kept us lean, trusted, and effective.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">Spring 2026</span>
+            <span class="post-tag">Org Design</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('va-stars')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('va-stars')">
+        <div class="post-card-img">
+          <img src="blog-vastars.jpg" alt="Virginia STAR laptops" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="laptop-2" width="24" height="24"></i><span>blog-vastars.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">Community · Service</div>
+          <h3>Virginia STAR: 50 Laptops Refurbished, 22 Donated to Oakton High School</h3>
+          <p>How I scaled operations from 15 to 50 units a semester, built automated tracking systems, and why I shifted our focus to graduating high school seniors who need a computer most.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">Spring 2026</span>
+            <span class="post-tag">Community Impact</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('mason-lobbies')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('mason-lobbies')">
+        <div class="post-card-img">
+          <img src="blog-lobbies.jpg" alt="Mason Lobbies" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="landmark" width="24" height="24"></i><span>blog-lobbies.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">Policy · Advocacy</div>
+          <h3>Advocating for AI Education at the Virginia State Capitol</h3>
+          <p>Led a 4-member student delegation to the General Assembly, championing a $1M AI Education Infrastructure amendment and $7.4M in affordability funding for GMU students.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">March 2026</span>
+            <span class="post-tag">Public Policy</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('ai-tools-2026')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('ai-tools-2026')">
+        <div class="post-card-img">
+          <img src="blog-tools.jpg" alt="AI tools" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="sparkles" width="24" height="24"></i><span>blog-tools.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">Technology · Tools</div>
+          <h3>The AI Workflow Stack I Actually Use as a Student</h3>
+          <p>From Perplexity for research to Copilot Designer for flyers to CapCut AI for video — the real toolkit that helps me run a club, create content, and stay ahead.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">Feb 2026</span>
+            <span class="post-tag">Productivity</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('microsoft-speaker')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('microsoft-speaker')">
+        <div class="post-card-img">
+          <img src="blog-msft.jpg" alt="Microsoft speaker session" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="mic" width="24" height="24"></i><span>blog-msft.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">Career · Tech</div>
+          <h3>What a Microsoft Engineer Taught Me About Standing Out</h3>
+          <p>Brendan Jenkins shared his path from AWS to Microsoft — and why showcasing your work publicly changes how recruiters see you in ways that most students completely underestimate.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">Fall 2025</span>
+            <span class="post-tag">Career Development</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="post-card fi" onclick="openModal('patriothacks')" tabindex="0" onkeydown="if(event.key==='Enter')openModal('patriothacks')">
+        <div class="post-card-img">
+          <img src="blog-hackathon.jpg" alt="PatriotHacks workshop" loading="lazy" width="320" height="180"
+               onerror="this.style.display='none';this.parentElement.querySelector('.post-card-img-ph').style.display='flex';">
+          <div class="post-card-img-ph" style="display:none;"><i data-lucide="zap" width="24" height="24"></i><span>blog-hackathon.jpg</span></div>
+        </div>
+        <div class="post-card-body">
+          <div class="post-card-cat">AI · Education</div>
+          <h3>Teaching AI-Powered Demo Creation at PatriotHacks 2026</h3>
+          <p>Presented to 20+ hackers on turning a weekend build into compelling content — OBS setups, CapCut AI editing, and smart prompt strategies for instant marketing assets.</p>
+          <div class="post-card-footer">
+            <span class="post-card-date">Spring 2026</span>
+            <span class="post-tag">Hackathon</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<hr class="div">
+
+<!-- LINKEDIN POSTS -->
+<section id="linkedin" class="linkedin-section">
+  <div class="cont">
+    <p class="section-label">From LinkedIn</p>
+    <h2 class="section-title">Essays &amp; posts.</h2>
+    <p style="color:var(--txm);max-width:50ch;margin-bottom:var(--s8);margin-top:calc(-1 * var(--s5));">My LinkedIn is where I share longer-form thinking on AI, leadership, and tech. Here are some highlights.</p>
+
+    <div class="li-grid">
+
+      <div class="li-post fi">
+        <div class="li-post-header">
+          <div class="li-avatar"><img src="hero-photo.jpg" alt="Angad" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="li-avatar-ph" style="display:none;"><i data-lucide="user" width="18" height="18"></i></div></div>
+          <div><div class="li-name">Angad Singh Dhawan</div><div class="li-handle">MIS Graduate · AI Club VP · GMU</div></div>
+        </div>
+        <div class="li-post-text">Standing on stage looking out at 100 attendees — executives from IBM, Maximus, and the U.S. DOT on the panel behind me — I realized something.
+
+As VP of the GMU AI Club, my responsibility was to keep all the moving parts aligned: coordinating with SWE, ColorStack, GMU Career Services, managing AV, catering, registration. That's project management.
+
+The principle that stuck with me: you can't manage what you can't measure. And in events, what you measure is *momentum*.</div>
+        <div class="li-tags"><span class="li-tag">Leadership</span><span class="li-tag">Project Management</span><span class="li-tag">Events</span></div>
+        <div class="li-post-footer">
+          <span class="li-date">April 2026</span>
+          <a href="https://www.linkedin.com/posts/angaddhawan_standing-on-stage-looking-out-at-100-attendees-activity-7448059027533582336-n6hb" target="_blank" rel="noopener noreferrer" class="li-open">Read on LinkedIn <i data-lucide="external-link" width="12" height="12"></i></a>
+        </div>
+      </div>
+
+      <div class="li-post fi">
+        <div class="li-post-header">
+          <div class="li-avatar"><img src="hero-photo.jpg" alt="Angad" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="li-avatar-ph" style="display:none;"><i data-lucide="user" width="18" height="18"></i></div></div>
+          <div><div class="li-name">Angad Singh Dhawan</div><div class="li-handle">MIS Graduate · AI Club VP · GMU</div></div>
+        </div>
+        <div class="li-post-text">I am proud to have been a foundational co-organizer behind GMU's AI Day at Fuse at Mason Square in Arlington for the Student Showcase Section.
+
+When AI Day was first introduced, my priority as Vice President of the AI Club was to ensure that student voices were the main event. I had the privilege of making the initial connection between our student leadership and Amarda Shehu, pitching the collaborative framework that made the Student Club Showcase possible.</div>
+        <div class="li-tags"><span class="li-tag">AI Day</span><span class="li-tag">Co-organized</span><span class="li-tag">GMU</span></div>
+        <div class="li-post-footer">
+          <span class="li-date">April 2026</span>
+          <a href="https://www.linkedin.com/in/angaddhawan/recent-activity/all/" target="_blank" rel="noopener noreferrer" class="li-open">View on LinkedIn <i data-lucide="external-link" width="12" height="12"></i></a>
+        </div>
+      </div>
+
+      <div class="li-post fi">
+        <div class="li-post-header">
+          <div class="li-avatar"><img src="hero-photo.jpg" alt="Angad" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="li-avatar-ph" style="display:none;"><i data-lucide="user" width="18" height="18"></i></div></div>
+          <div><div class="li-name">Angad Singh Dhawan</div><div class="li-handle">MIS Graduate · AI Club VP · GMU</div></div>
+        </div>
+        <div class="li-post-text">AMA x AI Club. Two communities, one room, one question: what does AI actually mean for marketing?
+
+The marketers understood audience psychology better than most engineers. The AI club members understood systems better than most marketers. Put them together and you get something neither could build alone.
+
+That's why cross-disciplinary collaboration isn't just nice to have. It's where the best ideas are born.</div>
+        <div class="li-tags"><span class="li-tag">AMA Collab</span><span class="li-tag">AI in Marketing</span><span class="li-tag">Cross-Club</span></div>
+        <div class="li-post-footer">
+          <span class="li-date">April 2026</span>
+          <a href="https://www.linkedin.com/in/angaddhawan/recent-activity/all/" target="_blank" rel="noopener noreferrer" class="li-open">View on LinkedIn <i data-lucide="external-link" width="12" height="12"></i></a>
+        </div>
+      </div>
+
+      <div class="li-post fi">
+        <div class="li-post-header">
+          <div class="li-avatar"><img src="hero-photo.jpg" alt="Angad" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="li-avatar-ph" style="display:none;"><i data-lucide="user" width="18" height="18"></i></div></div>
+          <div><div class="li-name">Angad Singh Dhawan</div><div class="li-handle">MIS Graduate · AI Club VP · GMU</div></div>
+        </div>
+        <div class="li-post-text">I want to help bring long-lasting impact at George Mason University.
+
+Here's what we're working on:
+
+1. AI Day — Coordinating with other clubs to bring projects to life. Directly working with Amarda Shehu.
+2. New officers on the board — Three incredible people I've personally mentored and ready to take things to the next level.
+3. Cross-campus partnerships — Workshops with PatriotHacks, a joint seminar with AMA on "AI in Marketing," and more.
+
+The goal isn't just to run a club. It's to build infrastructure that outlasts me.</div>
+        <div class="li-tags"><span class="li-tag">Vision</span><span class="li-tag">Club Leadership</span><span class="li-tag">AI Education</span></div>
+        <div class="li-post-footer">
+          <span class="li-date">March 2026</span>
+          <a href="https://www.linkedin.com/posts/angaddhawan_i-want-to-help-bring-long-lasting-impact-activity-7445222981041143808--N1Q" target="_blank" rel="noopener noreferrer" class="li-open">Read on LinkedIn <i data-lucide="external-link" width="12" height="12"></i></a>
+        </div>
+      </div>
+
+      <div class="li-post fi">
+        <div class="li-post-header">
+          <div class="li-avatar"><img src="hero-photo.jpg" alt="Angad" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"><div class="li-avatar-ph" style="display:none;"><i data-lucide="user" width="18" height="18"></i></div></div>
+          <div><div class="li-name">Angad Singh Dhawan</div><div class="li-handle">MIS Graduate · AI Club VP · GMU</div></div>
+        </div>
+        <div class="li-post-text">This week I've officially retired from my role as Lead Coordinator for VA Stars at George Mason University.
+
+VA Stars is a state-funded program that teaches students how to refurbish computer hardware and then donate them to students in need.
+
+My team achieved great success — we refurbished 50 laptops in total, and this semester distributed 22 laptops to Oakton High School. We are students supporting students.</div>
+        <div class="li-tags"><span class="li-tag">Virginia STAR</span><span class="li-tag">Community</span><span class="li-tag">Service</span></div>
+        <div class="li-post-footer">
+          <span class="li-date">Spring 2026</span>
+          <a href="https://www.linkedin.com/in/angaddhawan/recent-activity/all/" target="_blank" rel="noopener noreferrer" class="li-open">View on LinkedIn <i data-lucide="external-link" width="12" height="12"></i></a>
+        </div>
+      </div>
+
+    </div>
+
+    <div style="text-align:center;margin-top:var(--s10);">
+      <a href="https://www.linkedin.com/in/angaddhawan/recent-activity/all/" target="_blank" rel="noopener noreferrer" class="btn btn-ghost" style="margin-inline:auto;">
+        <i data-lucide="linkedin" width="16" height="16"></i>
+        See all posts on LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <a href="index.html" style="font-size:var(--xs);color:var(--txf);">← Back to Portfolio</a>
+    <div class="foot-links">
+      <a href="blog.html">Blog</a>
+      <a href="projects.html">Projects</a>
+      <a href="https://blinq.me/T3EyaGI2pJGJ7rfzTi6C?bs=db" target="_blank" rel="noopener noreferrer">Connect</a>
+    </div>
+    <span class="foot-copy">© 2026 · Angad Singh Dhawan</span>
+  </div>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay" onclick="if(event.target===this)closeModal()" role="dialog" aria-modal="true">
+  <div class="modal" id="modal-content">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close"><i data-lucide="x" width="16" height="16"></i></button>
+    <div class="modal-cat" id="modal-cat"></div>
+    <h2 id="modal-title"></h2>
+    <div class="modal-meta" id="modal-meta"></div>
+    <div class="modal-body" id="modal-body"></div>
+  </div>
+</div>
+
+<script>
+/* OPTION D: DENSE PARTICLE NETWORK */
+(function(){
+  const c=document.getElementById('blog-bg-canvas');if(!c)return;
+  const ctx=c.getContext('2d');let W,H,pts=[];
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  const dark=()=>document.documentElement.getAttribute('data-theme')==='dark';
+  const N=window.innerWidth<640?70:140;
+  for(let i=0;i<N;i++)pts.push({x:Math.random()*window.innerWidth,y:Math.random()*window.innerHeight,vx:(Math.random()-.5)*.38,vy:(Math.random()-.5)*.38,r:Math.random()*1.8+.6,p:Math.random()*Math.PI*2});
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    const col=dark()?'rgba(79,184,200,':'rgba(1,105,111,';
+    pts.forEach((p,i)=>{
+      p.p+=.006;p.x+=p.vx+Math.sin(p.p+i*.25)*.1;p.y+=p.vy+Math.cos(p.p+i*.25)*.1;
+      if(p.x<0||p.x>W)p.vx*=-1;if(p.y<0||p.y>H)p.vy*=-1;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+      ctx.fillStyle=col+'.65)';ctx.fill();
+    });
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<140){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=col+(1-d/140)*.28+')';ctx.lineWidth=.9;ctx.stroke();}
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
+  /* mouse parallax on orbs */
+  const orbs=document.querySelectorAll('.blog-orb');
+  let mx=0,my=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX/window.innerWidth-.5;my=e.clientY/window.innerHeight-.5;});
+  setInterval(()=>{
+    const strengths=[28,18,12];
+    orbs.forEach((o,i)=>{o.style.transform=`translate(${mx*strengths[i]}px,${my*strengths[i]}px)`;});
+  },50);
+})();
+(function(){
+  const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+  function autoT(){const h=new Date().getHours();return(h>=19||h<7)?'dark':'light';}
+  let d=r.getAttribute('data-theme')||autoT();
+  r.setAttribute('data-theme',d);
+  function si(m){if(!t)return;t.innerHTML=m==='dark'?'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>':'<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';}
+  si(d);
+  t&&t.addEventListener('click',()=>{d=d==='dark'?'light':'dark';r.setAttribute('data-theme',d);si(d);});
+})();
+
+/* ========== DOT GLOBE ========== */
+(function(){
+  const canvas = document.getElementById('dot-globe');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const SIZE = 580;
+  canvas.width = SIZE;
+  canvas.height = SIZE;
+  canvas.style.width = SIZE + 'px';
+  canvas.style.height = SIZE + 'px';
+
+  const R = SIZE * 0.42;
+  const cx = SIZE / 2, cy = SIZE / 2;
+  const dots = [];
+
+  // Generate dots using lat/lon grid
+  const RINGS = 28;
+  const BASE = 52;
+  for(let la = -RINGS; la <= RINGS; la++){
+    const phi = (la / RINGS) * (Math.PI / 2);
+    const n = Math.round(BASE * Math.cos(phi));
+    for(let i = 0; i < n; i++){
+      dots.push({ phi, theta: (i / n) * Math.PI * 2 });
+    }
+  }
+  // Add some random scatter dots for texture
+  for(let i = 0; i < 120; i++){
+    const phi = (Math.random() - 0.5) * Math.PI;
+    dots.push({ phi, theta: Math.random() * Math.PI * 2 });
+  }
+
+  let rot = 0;
+  const dark = () => document.documentElement.getAttribute('data-theme') === 'dark';
+
+  function project(phi, theta){
+    const x = R * Math.cos(phi) * Math.cos(theta + rot);
+    const y = R * Math.sin(phi);
+    const z = R * Math.cos(phi) * Math.sin(theta + rot);
+    return { x: cx + x, y: cy - y, z };
+  }
+
+  function draw(){
+    ctx.clearRect(0, 0, SIZE, SIZE);
+    const col = dark() ? [79, 158, 168] : [1, 105, 111];
+
+    // Sort dots by z depth
+    const projected = dots.map(d => {
+      const p = project(d.phi, d.theta);
+      return { ...p };
+    }).sort((a, b) => a.z - b.z);
+
+    projected.forEach(p => {
+      const norm = (p.z + R) / (2 * R);
+      if(norm < 0.02) return;
+      const alpha = Math.max(0.04, norm * 0.82);
+      const r = Math.max(0.4, norm * 2.8);
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${col[0]},${col[1]},${col[2]},${alpha})`;
+      ctx.fill();
+    });
+
+    // Subtle edge glow
+    const grad = ctx.createRadialGradient(cx, cy, R * 0.75, cx, cy, R * 0.98);
+    grad.addColorStop(0, 'rgba(0,0,0,0)');
+    grad.addColorStop(1, dark() ? 'rgba(12,11,10,0.35)' : 'rgba(247,246,242,0.4)');
+    ctx.beginPath();
+    ctx.arc(cx, cy, R * 0.99, 0, Math.PI * 2);
+    ctx.fillStyle = grad;
+    ctx.fill();
+
+    rot += 0.0028;
+    requestAnimationFrame(draw);
+  }
+
+  draw();
+})();
+
+/* ========== ARTICLE DATA ========== */
+const articles = {
+  'ai-day-coorg': {
+    cat: 'Leadership · Events',
+    title: 'Co-Organizing GMU\'s Inaugural AI Day: Uniting 7 Student Orgs Around One Mission',
+    meta: 'April 2026 · 5 min read',
+    body: `<p>When Dr. Amarda Shehu, GMU's Vice President and Chief AI Officer, announced AI Day, most student organizations heard about it passively. I made the call to pitch our involvement directly.</p>
+<p>As VP of the GMU AI Club, I arranged the initial meeting and presented a collaborative framework that ultimately brought 7 student organizations onto the same stage: the AI Club, AI Safety and Governance Club, Society of Women Engineers, PatriotHacks, GMU Computer Science Club, Women in Cybersecurity, and Google Developer Group on Campus.</p>
+<p><strong>What it actually took to execute:</strong></p>
+<p>I created a group chat, personally reached out to each organization's leadership, and onboarded them into a shared planning process. That meant tracking deadlines for slide submissions, following up individually when people went quiet, and designing the AI Club's core presentation deck myself when we didn't have a Creative Director available.</p>
+<p>On the day of the event — 2:00 PM to 5:00 PM at Fuse at Mason Square in Arlington — I stayed on the ground for the full programming block. I managed stage transitions, assisted with mic and AV setups, ran grassroots outreach to fill the room in real time, recorded the showcase sessions, and coordinated the large group photos with Dr. Shehu.</p>
+<p>The biggest lesson: <strong>connection is the product.</strong> The hallway conversations, the networking after panels, the student who walks away with a contact they didn't have before — that's what a showcase is actually for. Everything else is logistics in service of that.</p>`
+  },
+  'ai-governance': {
+    cat: 'AI & Governance',
+    title: 'AI Literacy, Responsible Governance & What GMU AI Day Taught Me',
+    meta: 'March 2026 · 4 min read',
+    body: `<p>At GMU AI Day, something rare happened — researchers, policymakers, faculty, students, and practitioners were all in the same room at the same time. And none of them were there to pitch something. They were there to think together.</p>
+<p>Organized by Dr. Amarda Shehu, GMU's Vice President and Chief AI Officer, AI Day is built around one central premise: that AI literacy isn't optional anymore. Whether you're writing policy, building systems, or just trying to make sense of what your employer is deploying — you need to understand how these systems work and fail.</p>
+<p><strong>What struck me most</strong> was the conversation about responsible governance. Not "AI safety" in the abstract, existential sense — but practical questions: Who is accountable when an automated system makes a bad call? How do you audit a model that nobody fully understands? What does workforce readiness actually look like when the tools keep changing?</p>
+<p>As VP of the GMU AI Club, coordinating our student exhibition at AI Day pushed me to think harder about what we actually teach our members. Technical skills matter. But so does the judgment to ask when <em>not</em> to use AI — and the communication skills to explain that reasoning to someone who doesn't code.</p>
+<p>The room that day was a model for what cross-disciplinary collaboration looks like in practice. I left with more questions than answers — which is exactly what a good conference should do.</p>`
+  },
+  'cybersecurity-forum': {
+    cat: 'Leadership · Events',
+    title: 'What I Learned Standing on Stage in Front of 100 People',
+    meta: 'April 2026 · 3 min read',
+    body: `<p>I've run events before. But the GMU Cybersecurity Networking Forum was different — not because of the size, but because of the stakes. IBM, Maximus, U.S. DOT executives on a panel. SWE, ColorStack, and GMU Career Services all co-organizing. Over 100 attendees. And me at the front of house, holding it together.</p>
+<p><strong>What I realized:</strong> event management is project management with zero tolerance for error.</p>
+<p>When the mic failed mid-panel, I fixed it on stage. When the catering budget needed navigating through the student funding board, I handled it in advance with a halal and vegetarian option accounted for. When the schedule drifted, I pulled it back without anyone noticing.</p>
+<p>The skill isn't crisis management. It's preparation so thorough that crises become inconveniences. The three things that saved the event:</p>
+<p>1. A run-of-show document that every stakeholder had reviewed the week before.<br>2. A dedicated person for each zone (stage, registration, catering, AV).<br>3. A clear closing remark that I had memorized and rehearsed — so even if everything else went sideways, the audience left with something memorable.</p>
+<p>The lesson I'll carry: people don't remember what went wrong. They remember how you made them feel.</p>`
+  },
+  'ama-marketing': {
+    cat: 'AI · Marketing',
+    title: 'The AMA × AI Marketing Masterclass: Building Content Pipelines That Scale',
+    meta: 'April 2026 · 4 min read',
+    body: `<p>On April 28th, Jonathan Harris and I co-hosted "AI in Marketing: Funnel Cycles & Content Acceleration" for the final AMA meeting of the semester at GMU. Our goal was to make generative AI concrete — not theoretical, not hype, but actual workflows students and marketers could use the next day.</p>
+<p><strong>Jonathan covered the business and agency side:</strong> The saturation of B2C AI and why the real disruption is happening in B2B, where LinkedIn has become the #1 AI citation source for professional queries. How AI agents are evolving past chatbots to handle competitive analysis, campaign tracking, and A/B testing. And the critical distinction between lead generation vs. demand generation — and how AI accelerates content at every stage of the funnel.</p>
+<p><strong>I covered the operational side</strong> — bridging abstract concepts to fully executed technical workflows:</p>
+<p>The Automated Content Pipeline: How to turn a 50-minute anchor recording into bite-sized, algorithm-optimized assets using OpusClip. I demonstrated the process live — taking a raw recording and generating ready-to-go short clips in under 10 minutes.</p>
+<p>High-Level Prompting & Brand Architecture: Moving from a raw idea to a polished event flyer using role-based prompting, exact constraints, and contextual memory in tools like Perplexity Pro and Gemini 3.1 Pro.</p>
+<p>GPU-Powered Offline Workflows: Using LocalSend for fast cross-platform file transfers and BSRGANx4 via QualityScaler for native video and image upscaling — without losing quality or depending on the cloud.</p>
+<p>The full masterclass recording is available here: <a href="https://lnkd.in/eqQEKHwZ" target="_blank" rel="noopener" style="color:var(--pr)">lnkd.in/eqQEKHwZ</a></p>`
+  },
+  'ai-club-growth': {
+    cat: 'Community · AI',
+    title: 'Building the GMU AI Club From the Ground Up',
+    meta: 'March 2026 · 5 min read',
+    body: `<p>When I took on the VP role at the GMU AI Club, the club had potential — but not infrastructure. No consistent content strategy, no scalable event format, no pipeline for bringing in new leadership.</p>
+<p>Here's what we built over the year:</p>
+<p><strong>Digital presence:</strong> A structured Discord server with AI moderation bots (Sapphire, YAGPDB), automated ticketing, dedicated channels for announcements, recordings, and a self-service role system. Instagram and Discord generating 500–700 weekly impressions through interactive polls and countdown stories.</p>
+<p><strong>Events:</strong> Weekly Thursday meetings with guest speakers — including Microsoft engineers. A "AI in Marketing" seminar with AMA. Specialized workshops with PatriotHacks. And the crown jewel: coordinating 8–10 student organizations for the inaugural GMU AI Day student exhibition, in direct partnership with Dr. Amarda Shehu.</p>
+<p><strong>Leadership pipeline:</strong> I ran a two-step election process, trained new officers personally, and built handoff documentation so the club would survive after I graduated. Infrastructure outlasts individuals — that was the goal from day one.</p>
+<p>What I learned: the hardest part of building a student organization isn't the events. It's convincing people that showing up every week to something consistent is worth their time. Once you solve that, everything else follows.</p>`
+  },
+  'club-tech-stack': {
+    cat: 'Operations · Technology',
+    title: 'Running a Student Org Like a Startup: Our Exact Tech Stack',
+    meta: 'Spring 2026 · 4 min read',
+    body: `<p>Running the GMU AI Club effectively required us to operate like a small media startup. To keep up with event promotions, content creation, and team communication, we heavily optimized our tech stack. Here's what actually gave us a massive edge:</p>
+<p><strong>Content & Video Editing</strong><br>
+Authentic content from actual events outperforms generic promotion every time. A cheap Amazon tripod and a budget wireless mic (Hollyland A1) — pinning a mic to a guest speaker lets you capture high-quality event recordings before anyone else. CapCut Pro's AI-powered editor automatically generates captions and easily turns long-form speaker sessions into engaging short-form clips for Instagram Reels. Picsart for quick corrections to flyers and event pictures.</p>
+<p><strong>AI & Productivity</strong><br>
+Perplexity gives access to top LLMs like Grok, ChatGPT, and Gemini all in one place. We used it for deep-dive research on potential guest speakers, event planning, and drafting announcements. Microsoft Copilot — free through our university Office 365 accounts — generated AI images for high-quality event posters when we needed something promotional fast.</p>
+<p><strong>Community Management</strong><br>
+Discord Ticket Tool: A bot so members can open private tickets to report issues or ask the officer board questions directly. Canva Pro: We maintain premium templates so the whole team can ensure presentations look uniform and professional week after week.</p>
+<p>The biggest lesson: tools don't run a club. Systems do. The real work is building repeatable processes around each tool so the club can function without any single person.</p>`
+  },
+  'club-operations': {
+    cat: 'Operations · Leadership',
+    title: 'The Logistics Playbook: What Every Student Org Gets Wrong',
+    meta: 'Spring 2026 · 4 min read',
+    body: `<p>You can have the best marketing in the world, but if your backend logistics are a mess, your student organization will fall behind. Here's the operational playbook we developed — learned the hard way.</p>
+<p><strong>Avoid the "Friday Meeting" Trap</strong><br>
+We learned this the hard way last semester. Even if students RSVP, the friction of commuting to campus on a Friday afternoon is simply too high. It was a massive fail. Stick to Monday through Thursday. Send out a Google Form poll to your email list and Discord before the semester starts to figure out exact availability, build your schedule, and stick to it.</p>
+<p><strong>Book Rooms Months in Advance</strong><br>
+Large, high-traffic rooms get booked incredibly fast by other organizations. Do not wait until the semester starts. Your Secretary needs to be in 25live securing your spaces 1–2 months in advance. All rooms are open if you just book them early enough.</p>
+<p><strong>Strategic Food Funding</strong><br>
+Everyone loves free food, but throwing a pizza party at the first meeting isn't always the best strategy. Deploying food midway through the semester is an incredible retention tool when midterms hit. Use EZcater — they provide fast, wide varieties of food with strict itemized receipts that the Student Funding Board requires.</p>
+<p><strong>Streamline Speaker Outreach</strong><br>
+Cold emailing professionals works, but it's exhausting. Tap into your university's Career Services. They already have deep connections with industry professionals, alumni, and companies looking to hire. Getting warm contacts through them saves hours of headaches.</p>
+<p>The growth funnel we built: in-person recruiting at Get Connected → NFC Blinq cards route to Discord → Discord bot DMs Mason360 registration → @everyone pings drive event attendance → event content feeds social media → social media feeds next semester's Get Connected booth.</p>`
+  },
+  'trial-officer': {
+    cat: 'Leadership · Culture',
+    title: 'Why We Built a Trial Officer System (And Why You Should Too)',
+    meta: 'Spring 2026 · 3 min read',
+    body: `<p>One of the best leadership decisions we made for the GMU AI Club: nobody gets a board role just because they interviewed well. In student organizations, that's where so many problems begin. Someone sounds excited, gets the title, joins the board, and then disappears when the real work starts.</p>
+<p>We treated our organization like a startup: keep the structure lean, define precise roles, and make expectations visible. To filter out people who like the idea of leadership more than the reality of it, we created the Trial Officer System.</p>
+<p><strong>Before someone steps into a role, they complete a challenge directly related to their desired position:</strong></p>
+<p>President / VP: Record a speech on YouTube outlining your vision and execution plan.<br>
+Outreach: Attend two outside club events and network to get the contact info of a speaker or club president.<br>
+Marketing: Run the kiosk at the Get Connected fair, or put up posters of our Discord server in every building on campus.<br>
+Creative Director: Edit two high-quality video reels of an event using CapCut.<br>
+Treasurer: Meet with the Student Involvement Office, learn the funding and itemized receipt workflows, and present a summary to the board.<br>
+Secretary: Pitch how you will assist leadership and successfully navigate 25live to book rooms.<br>
+Event Coordinator: Pitch a comprehensive execution plan for a 20–50 person event.<br>
+Project Coordinator: Pitch your technical project roadmap to guide students throughout the semester.</p>
+<p>The challenge doesn't need to be impossible. It just needs to prove three things: genuine interest, available time, and the ability to execute.</p>
+<p>The best boards aren't built on popularity. They're built on trust, consistency, and proof.</p>`
+  },
+  'ai-tools-2026': {
+    cat: 'Technology · Tools',
+    title: 'The AI Workflow Stack I Actually Use as a Student',
+    meta: 'February 2026 · 3 min read',
+    body: `<p>Everyone's talking about AI tools. Here's what I actually use, day to day, as a student running a club, creating content, and trying to stay ahead of the curve.</p>
+<p><strong>Research & Writing:</strong> Perplexity AI is my default for anything where I need current, cited information fast. It replaced my old habit of opening 12 browser tabs. For longer drafts — essays, scripts, LinkedIn posts — I use Claude for its ability to maintain tone across long documents.</p>
+<p><strong>Content creation:</strong> CapCut AI for short-form video (the auto-captions and beat sync alone save me an hour per video). DaVinci Resolve for anything that needs real editing precision. Microsoft Copilot Designer for quick flyer generation when I need something promotional fast.</p>
+<p><strong>Workflow automation:</strong> Snapdrop and Quick Share for removing file-transfer bottlenecks when working with a team at a hackathon. OBS Studio for recording live speaker sessions to the AI Club YouTube channel.</p>
+<p><strong>Community & ops:</strong> A fully configured Discord workspace with Sapphire and YAGPDB bots for moderation, automated ticketing, and a self-service role assignment system that captures real data on member interests.</p>
+<p>The honest take: the tools aren't magic. The discipline to actually learn them, build workflows around them, and then teach others — that's the differentiator. AI is a multiplier. You still have to bring the base.</p>`
+  },
+  'va-stars': {
+    cat: 'Community · Service',
+    title: 'Virginia STAR: 50 Laptops Refurbished, 22 Donated to Oakton High School',
+    meta: 'Spring 2026 · 5 min read',
+    body: `<p>Losing my mom on the last day of 2023 profoundly changed my perspective on life and leadership. Despite her own health struggles, she lived a life of constant devotion, strength, and service to others. Honoring her legacy, along with the Sikh value of Seva (selfless service), is the greatest motivation behind my dedication to giving back to the community.</p>
+<p>This is the "why" that drove my passion for the Virginia STAR program — a state-funded initiative at George Mason University where we refurbish donated laptops to empower students in need.</p>
+<p><strong>What we built during my time as Student Coordinator:</strong></p>
+<p>I scaled our distribution from 15 to 50 laptops per semester by establishing clear workflows and implementing an automated tracking system using Google Forms and Excel to log inventory, monitor volunteer hours, and track output. I engineered a dedicated charging station on our inventory shelves at the Mason Innovation Exchange (MIX), allowing me to cycle computers throughout the week so units were always fully charged.</p>
+<p>On the hardware side, I led weekly workshops where volunteers safely disassembled units, installed new M.2 SSDs, tested keyboards and core features, and thoroughly cleaned the devices. We partnered with the Tech for Good club to host a massive 25-person event where I walked a full room through installing M.2 SSDs step by step.</p>
+<p><strong>The distribution shift:</strong> I realized we needed a more direct approach. I shifted our target demographic to graduating high school seniors — having a personal computer is critical for their transition into adulthood and college. My team drove to six different high schools, skipping phone calls entirely to speak directly with front desk staff and principals. That in-person approach built immense trust and credibility — and recently culminated in a successful donation of 22 laptops to seniors at Oakton High School.</p>
+<p>Robel Bereket now leads the program as Student Coordinator. I'm deeply honored by how far this team has come.</p>`
+  },
+  'mason-lobbies': {
+    cat: 'Policy · Advocacy',
+    title: 'Advocating for AI Education at the Virginia State Capitol',
+    meta: 'March 2026 · 4 min read',
+    body: `<p>I had the honor of serving as Group Leader for GMU's Loudoun County student delegation at Mason Lobbies, leading Andrew Boese, Alqasem Hasan, and Anvi Chitti in a day of legislative meetings at the Virginia General Assembly.</p>
+<p>Meeting with State Sen. Kannan Srinivasan, Del. David Reid, Del. Delores McQuinn, and Del. JJ Singh required a highly cohesive strategy. Before stepping into these high-stakes, 15-minute meetings, our team conducted deep policy research and mapped our talking points to each lawmaker's specific committee assignments.</p>
+<p><strong>What we advocated for:</strong></p>
+<p>As Vice President of GMU's AI Club, I championed the $1M state budget amendment for AI Education Infrastructure, emphasizing the need to develop the AI Innovation Nexus to scale AI literacy across the Commonwealth — while bridging the conversation to AI safety and corporate accountability.</p>
+<p>Andrew Boese underscored the importance of the $56M Critical Maintenance fund, highlighting that robust campus infrastructure is essential to supporting 40,000+ students without passing financial burden onto them.</p>
+<p>Alqasem Hasan led a powerful discussion on student safety, advocating to protect immigrant students and ensure every student feels entirely secure on campus.</p>
+<p>Anvi Chitti fiercely advocated for the $7.4M "Maintain Affordability" funding increase, personally thanking Del. JJ Singh for his efforts on the recent tuition freeze bill.</p>
+<p>I also had the personal privilege of meeting with Delegate JJ Singh — a fellow Loudoun County resident — and sharing a warm "Sat Sri Akal" before getting to the business of policy. That intersection of personal connection and professional advocacy is something I'll carry with me.</p>`
+  },
+  'microsoft-speaker': {
+    cat: 'Career · Tech',
+    title: 'What a Microsoft Engineer Taught Me About Standing Out',
+    meta: 'Fall 2025 · 3 min read',
+    body: `<p>Last semester, we had the privilege of hosting Brendan Jenkins — Senior Cloud and AI Solutions Engineer at Microsoft — for a session at the GMU Artificial Intelligence Club. I had a great experience coordinating and recording the event alongside Isabella Pureza and Rishi Vinod.</p>
+<p>Brendan shared his journey from AWS to Microsoft and offered some of the most direct career advice I've heard in a club setting. My top takeaways:</p>
+<p><strong>Certifications matter — especially AI and cloud.</strong> They go hand in hand. Brendan emphasized that certifications signal commitment and specific competency in a way that a degree alone doesn't. I'm actively seeking certifications that align with my interests in data analytics and AI.</p>
+<p><strong>Showcase your work publicly.</strong> The project that made Brendan stand out to recruiters was a solar car project he worked on at Mason — something visible, tangible, and easy to point to. His advice directly inspired what I'm doing now: sharing insights, building in public, creating a portfolio that speaks before I do. I credit this conversation with accelerating my decision to build my personal website.</p>
+<p><strong>Find what you're good at by going above and beyond.</strong> Brendan found his path by offering extra help during a service launch. Going outside your job description, in the direction of your genuine interest, is how you discover where you're exceptional — not just competent.</p>
+<p>The full recording of Brendan's presentation is here: <a href="https://lnkd.in/eXTB-eNN" target="_blank" rel="noopener" style="color:var(--pr)">lnkd.in/eXTB-eNN</a></p>`
+  },
+  'patriothacks': {
+    cat: 'AI · Education',
+    title: 'Teaching AI-Powered Demo Creation at PatriotHacks 2026',
+    meta: 'Spring 2026 · 3 min read',
+    body: `<p>As the Media Officer for the GMU AI Club, I had the opportunity to co-present at PatriotHacks 2026, George Mason University's flagship hackathon, alongside our founder Arman Mahoor.</p>
+<p>For my session, I presented "AI-Powered Demo Creation: Record, Edit & Promote Your Hack in Minutes." We had an amazing turnout of 20+ attendees who came to learn how to turn their weekend builds into captivating content.</p>
+<p>One of my core philosophies: <strong>AI should be used as a responsible tool to assist with development and storytelling, not to do the work for you.</strong> Authentic content produces relatability and invokes emotion that AI can't fully replicate. Adding your own twist to what AI produces is what makes it matter.</p>
+<p><strong>Key strategies we covered:</strong></p>
+<p>1. Efficient Recording Setups: Eliminating the bottleneck of slow file transfers using tools like Snapdrop and Quick Share, and optimizing OBS Studio for rapid, high-quality screen capture.</p>
+<p>2. AI-Assisted Editing: Leveraging tools like CapCut to quickly slice, polish, and transition video clips without getting bogged down in a complex timeline.</p>
+<p>3. Asset Creation & Promotion: Using detailed prompt strategies to generate marketing flyers and scripts that match your hack's tone and target audience.</p>
+<p>The full breakdown of these workflows is recorded: <a href="https://lnkd.in/eiChzDV9" target="_blank" rel="noopener" style="color:var(--pr)">lnkd.in/eiChzDV9</a></p>
+<p>Arman also hosted a detailed workshop on how to win hackathons — his recording is here: <a href="https://lnkd.in/eE4GGGit" target="_blank" rel="noopener" style="color:var(--pr)">lnkd.in/eE4GGGit</a></p>`
+  }
+};
+
+function openModal(id){
+  const a=articles[id]; if(!a)return;
+  document.getElementById('modal-cat').textContent=a.cat;
+  document.getElementById('modal-title').textContent=a.title;
+  document.getElementById('modal-meta').textContent=a.meta;
+  document.getElementById('modal-body').innerHTML=a.body;
+  document.getElementById('modal-overlay').classList.add('open');
+  document.body.style.overflow='hidden';
+  lucide.createIcons();
+}
+function closeModal(){
+  document.getElementById('modal-overlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal();});
+
+/* SCROLL FADE */
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('vis');obs.unobserve(e.target);}});},{threshold:.08});
+document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+lucide.createIcons();
+</script>
+</body>
+</html>
