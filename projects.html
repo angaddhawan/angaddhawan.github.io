@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects — Angad Dhawan</title>
+  <meta name="description" content="A curated portfolio of Angad Dhawan's projects across data analytics, AI & systems, media production, and business strategy." />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,600,700&f[]=cabinet-grotesk@400,500,700,800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --color-bg:#f7f6f2; --color-surface:#f2f1ed; --color-surface-2:#eceae5;
+      --color-surface-offset:#e5e3de; --color-divider:#d8d5cf; --color-border:#ccc9c2;
+      --color-text:#1c1a15; --color-text-muted:#6b6962; --color-text-faint:#a8a7a2;
+      --color-text-inverse:#f5f4f0;
+      --color-primary:#01696f; --color-primary-hover:#0c4e54; --color-primary-highlight:#d4e5e3;
+      --color-orange:#c45e00; --color-orange-highlight:#f0dece;
+      --color-blue:#005f8e; --color-blue-highlight:#cddce8;
+      --color-purple:#6b31a8; --color-purple-highlight:#dcd0ee;
+      --color-success:#3a6e1a; --color-success-highlight:#d2e0ca;
+      --radius-sm:.375rem; --radius-md:.5rem; --radius-lg:.75rem;
+      --radius-xl:1rem; --radius-2xl:1.25rem; --radius-full:9999px;
+      --shadow-sm:0 1px 3px oklch(0.2 0.01 80/.07);
+      --shadow-md:0 4px 14px oklch(0.2 0.01 80/.10);
+      --shadow-hover:0 8px 24px oklch(0.2 0.01 80/.15);
+      --transition:180ms cubic-bezier(0.16,1,0.3,1);
+      --font-display:'Cabinet Grotesk','Helvetica Neue',sans-serif;
+      --font-body:'Satoshi','Inter',sans-serif;
+      --text-xs:clamp(0.75rem,0.7rem + 0.25vw,0.875rem);
+      --text-sm:clamp(0.875rem,0.8rem + 0.35vw,1rem);
+      --text-base:clamp(1rem,0.95rem + 0.25vw,1.125rem);
+      --text-lg:clamp(1.125rem,1rem + 0.75vw,1.5rem);
+      --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+      --space-1:.25rem; --space-2:.5rem; --space-3:.75rem; --space-4:1rem;
+      --space-5:1.25rem; --space-6:1.5rem; --space-8:2rem; --space-10:2.5rem;
+      --space-12:3rem; --space-16:4rem; --space-20:5rem;
+      --content-default:1120px;
+    }
+    [data-theme="dark"] {
+      --color-bg:#141312; --color-surface:#1a1917; --color-surface-2:#1f1e1c;
+      --color-surface-offset:#242321; --color-divider:#2a2927; --color-border:#353330;
+      --color-text:#d0ceca; --color-text-muted:#7a7874; --color-text-faint:#565452;
+      --color-primary:#4f98a3; --color-primary-highlight:#1e3334;
+      --color-orange:#e08840; --color-orange-highlight:#3d2e1e;
+      --color-blue:#4d8ec4; --color-blue-highlight:#1a2d3e;
+      --color-purple:#9f6de0; --color-purple-highlight:#2a1d40;
+      --color-success:#6daa45; --color-success-highlight:#1a2c12;
+      --shadow-sm:0 1px 3px oklch(0 0 0/.28);
+      --shadow-md:0 4px 14px oklch(0 0 0/.38);
+      --shadow-hover:0 8px 28px oklch(0 0 0/.5);
+    }
+    @media(prefers-color-scheme:dark){:root:not([data-theme]){
+      --color-bg:#141312; --color-surface:#1a1917; --color-surface-2:#1f1e1c;
+      --color-surface-offset:#242321; --color-divider:#2a2927; --color-border:#353330;
+      --color-text:#d0ceca; --color-text-muted:#7a7874; --color-text-faint:#565452;
+      --color-primary:#4f98a3; --color-primary-highlight:#1e3334;
+      --color-orange:#e08840; --color-orange-highlight:#3d2e1e;
+      --color-blue:#4d8ec4; --color-blue-highlight:#1a2d3e;
+      --color-purple:#9f6de0; --color-purple-highlight:#2a1d40;
+      --color-success:#6daa45; --color-success-highlight:#1a2c12;
+      --shadow-sm:0 1px 3px oklch(0 0 0/.28);
+      --shadow-md:0 4px 14px oklch(0 0 0/.38);
+      --shadow-hover:0 8px 28px oklch(0 0 0/.5);
+    }}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scroll-padding-top:80px}
+    body{min-height:100dvh;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);line-height:1.6}
+    img,picture,video,canvas,svg{display:block;max-width:100%}
+    a,button,[role="button"]{transition:color var(--transition),background var(--transition),border-color var(--transition),box-shadow var(--transition),opacity var(--transition),transform var(--transition)}
+    button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+    ::selection{background:oklch(from var(--color-primary) l c h/.2);color:var(--color-text)}
+    :focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+    /* HEADER */
+    .site-header{position:sticky;top:0;z-index:100;background:oklch(from var(--color-bg) l c h/.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--color-divider)}
+    .site-header-inner{max-width:var(--content-default);margin-inline:auto;padding:var(--space-3) var(--space-6);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4)}
+    .site-logo{display:flex;align-items:center;gap:var(--space-2);text-decoration:none;color:var(--color-text)}
+    .site-logo-text{font-family:var(--font-display);font-size:var(--text-sm);font-weight:700;letter-spacing:-0.01em}
+    .site-nav{display:flex;align-items:center;gap:var(--space-1)}
+    .nav-link{text-decoration:none;font-size:var(--text-sm);font-weight:500;color:var(--color-text-muted);padding:var(--space-2) var(--space-3);border-radius:var(--radius-md)}
+    .nav-link:hover{color:var(--color-text);background:var(--color-surface)}
+    .nav-link.active{color:var(--color-text);background:var(--color-surface-2)}
+    .theme-toggle{padding:var(--space-2);border-radius:var(--radius-md);color:var(--color-text-muted);display:flex;align-items:center;justify-content:center;width:36px;height:36px}
+    .theme-toggle:hover{color:var(--color-text);background:var(--color-surface)}
+
+    /* PAGE HERO */
+    .page-hero{max-width:var(--content-default);margin-inline:auto;padding:var(--space-16) var(--space-6) var(--space-10)}
+    .page-hero-eyebrow{font-size:var(--text-xs);font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--color-primary);margin-bottom:var(--space-3)}
+    .page-hero h1{font-family:var(--font-display);font-size:var(--text-2xl);font-weight:800;letter-spacing:-0.03em;line-height:1.05;color:var(--color-text);margin-bottom:var(--space-4)}
+    .page-hero-desc{font-size:var(--text-base);color:var(--color-text-muted);max-width:55ch;line-height:1.65}
+
+    /* FILTER BAR */
+    .filter-bar-wrap{max-width:var(--content-default);margin-inline:auto;padding:0 var(--space-6) var(--space-8)}
+    .filter-bar{display:flex;flex-wrap:wrap;gap:var(--space-2)}
+    .filter-btn{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:600;letter-spacing:.04em;padding:var(--space-2) var(--space-3);border-radius:var(--radius-full);border:1px solid var(--color-border);color:var(--color-text-muted);background:transparent;cursor:pointer;white-space:nowrap}
+    .filter-btn:hover{color:var(--color-text);border-color:var(--color-text-muted)}
+    .filter-btn.active{background:var(--color-surface-2);border-color:var(--color-text);color:var(--color-text)}
+    .filter-dot{width:6px;height:6px;border-radius:50%;display:inline-block;flex-shrink:0}
+
+    /* LAYOUT */
+    .projects-layout{max-width:var(--content-default);margin-inline:auto;padding:0 var(--space-6) var(--space-20)}
+
+    /* SECTION HEADER */
+    .section-header{display:flex;align-items:baseline;gap:var(--space-3);margin-bottom:var(--space-6);padding-bottom:var(--space-4);border-bottom:1px solid var(--color-divider)}
+    .section-title{font-family:var(--font-display);font-size:var(--text-lg);font-weight:700;letter-spacing:-0.02em;color:var(--color-text)}
+    .section-count{font-size:var(--text-xs);font-weight:600;color:var(--color-text-faint);letter-spacing:.06em}
+    .section-icon{width:20px;height:20px;flex-shrink:0}
+    .project-section{margin-bottom:var(--space-16)}
+    .project-section[data-hidden="true"]{display:none}
+
+    /* CARDS GRID */
+    .cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:var(--space-5)}
+    .cards-grid .card-featured{grid-column:1/-1}
+
+    /* CARD */
+    .card{background:var(--color-surface);border:1px solid oklch(from var(--color-text) l c h/.07);border-radius:var(--radius-2xl);overflow:hidden;display:flex;flex-direction:column;box-shadow:var(--shadow-sm);position:relative}
+    .card:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px)}
+
+    /* CARD IMAGE */
+    .card-img-wrap{position:relative;overflow:hidden;aspect-ratio:16/9;background:var(--color-surface-offset);flex-shrink:0}
+    .card.card-featured .card-img-wrap{aspect-ratio:21/7}
+    .card-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s cubic-bezier(0.16,1,0.3,1)}
+    .card:hover .card-img-wrap img{transform:scale(1.04)}
+    .card-img-wrap::after{content:'';position:absolute;bottom:0;left:0;right:0;height:50%;background:linear-gradient(to top,oklch(from var(--color-surface) l c h/.6) 0%,transparent 100%);pointer-events:none}
+
+    /* CARD BODY */
+    .card-body{padding:var(--space-5);display:flex;flex-direction:column;gap:var(--space-3);flex:1}
+    .card.card-featured .card-body{padding:var(--space-6)}
+    .card-top{display:flex;align-items:flex-start;justify-content:space-between;gap:var(--space-3)}
+    .card-badges{display:flex;flex-wrap:wrap;gap:var(--space-1)}
+    .badge{display:inline-flex;align-items:center;gap:4px;font-size:var(--text-xs);font-weight:600;letter-spacing:.04em;padding:2px var(--space-2);border-radius:var(--radius-full)}
+    .badge-teal{background:var(--color-primary-highlight);color:var(--color-primary)}
+    .badge-orange{background:var(--color-orange-highlight);color:var(--color-orange)}
+    .badge-blue{background:var(--color-blue-highlight);color:var(--color-blue)}
+    .badge-purple{background:var(--color-purple-highlight);color:var(--color-purple)}
+    .badge-green{background:var(--color-success-highlight);color:var(--color-success)}
+    .badge-neutral{background:var(--color-surface-offset);color:var(--color-text-muted)}
+    .card-year{font-size:var(--text-xs);font-weight:500;color:var(--color-text-faint);white-space:nowrap;flex-shrink:0;padding-top:3px}
+    .card-title{font-family:var(--font-display);font-size:var(--text-base);font-weight:700;letter-spacing:-0.015em;color:var(--color-text);line-height:1.25}
+    .card.card-featured .card-title{font-size:var(--text-lg)}
+    .card-desc{font-size:var(--text-sm);color:var(--color-text-muted);line-height:1.6}
+    .card-tags{display:flex;flex-wrap:wrap;gap:var(--space-1);margin-top:auto;padding-top:var(--space-2)}
+    .tag{font-size:var(--text-xs);color:var(--color-text-faint);background:var(--color-surface-2);border:1px solid var(--color-divider);padding:2px var(--space-2);border-radius:var(--radius-sm);font-weight:500}
+
+    .live-dot{display:inline-flex;align-items:center;gap:5px;font-size:var(--text-xs);font-weight:600;color:var(--color-success)}
+    .live-dot::before{content:'';width:6px;height:6px;background:var(--color-success);border-radius:50%;animation:pulse-dot 1.8s ease-in-out infinite}
+    @keyframes pulse-dot{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(16px);transition:opacity .45s ease,transform .45s ease}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* FOOTER */
+    .site-footer{border-top:1px solid var(--color-divider);padding:var(--space-8) var(--space-6)}
+    .site-footer-inner{max-width:var(--content-default);margin-inline:auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--space-4)}
+    .footer-text{font-size:var(--text-xs);color:var(--color-text-faint)}
+    .footer-link{color:var(--color-text-muted);font-size:var(--text-xs);text-decoration:none}
+    .footer-link:hover{color:var(--color-text)}
+
+    /* MOBILE */
+    @media(max-width:600px){
+      .site-header-inner,.page-hero,.filter-bar-wrap,.projects-layout{padding-inline:var(--space-4)}
+      .page-hero{padding-top:var(--space-10)}
+      .nav-link:not(.active){display:none}
+      .cards-grid{grid-template-columns:1fr}
+      .card.card-featured{grid-column:1}
+      .card.card-featured .card-img-wrap{aspect-ratio:16/9}
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header" role="banner">
+  <div class="site-header-inner">
+    <a href="https://angaddhawan.github.io/" class="site-logo" aria-label="Angad Dhawan — Home" target="_blank" rel="noopener noreferrer">
+      <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
+        <rect width="28" height="28" rx="7" fill="var(--color-primary)"/>
+        <path d="M7 21L13 7h2l6 14h-2.5l-1.4-3.4H10.9L9.5 21H7zm4.7-5.4h4.6L14 10.6l-2.3 5z" fill="white"/>
+      </svg>
+      <span class="site-logo-text">Angad Dhawan</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary navigation">
+      <a href="https://angaddhawan.github.io/" class="nav-link" target="_blank" rel="noopener noreferrer">Home</a>
+      <a href="#" class="nav-link active" aria-current="page">Projects</a>
+      <a href="https://angaddhawan.github.io/" class="nav-link" target="_blank" rel="noopener noreferrer">Blog</a>
+      <a href="https://angaddhawan.github.io/" class="nav-link" target="_blank" rel="noopener noreferrer">Contact</a>
+    </nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="Switch to light mode">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <circle cx="12" cy="12" r="5"/>
+        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="page-hero">
+  <p class="page-hero-eyebrow">Work &amp; Projects</p>
+  <h1>Things I've built,<br>analyzed, and shipped.</h1>
+  <p class="page-hero-desc">Projects across data &amp; analytics, AI systems, media production, and business strategy — from coursework, clubs, internships, and personal work.</p>
+</div>
+
+<div class="filter-bar-wrap">
+  <div class="filter-bar" role="group" aria-label="Filter projects by category">
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="data"><span class="filter-dot" style="background:var(--color-primary)"></span>Data &amp; Analytics</button>
+    <button class="filter-btn" data-filter="ai-systems"><span class="filter-dot" style="background:var(--color-orange)"></span>AI &amp; Systems</button>
+    <button class="filter-btn" data-filter="media"><span class="filter-dot" style="background:var(--color-purple)"></span>Media &amp; Content</button>
+    <button class="filter-btn" data-filter="strategy"><span class="filter-dot" style="background:var(--color-blue)"></span>Business Strategy</button>
+    <button class="filter-btn" data-filter="it-infra"><span class="filter-dot" style="background:var(--color-success)"></span>IT &amp; Infrastructure</button>
+  </div>
+</div>
+
+<main class="projects-layout" id="main-content">
+
+  <!-- ===== DATA & ANALYTICS ===== -->
+  <section class="project-section reveal" data-section="data" aria-labelledby="sec-data-title">
+    <div class="section-header">
+      <svg class="section-icon" viewBox="0 0 20 20" fill="none" stroke="var(--color-primary)" stroke-width="1.5" aria-hidden="true">
+        <path d="M3 14l4-5 3 3 4-6 3 4" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="2" y="2" width="16" height="16" rx="2" stroke-opacity="0.3"/>
+      </svg>
+      <h2 class="section-title" id="sec-data-title">Data &amp; Analytics</h2>
+      <span class="section-count">5 projects</span>
+    </div>
+    <div class="cards-grid">
+
+      <article class="card card-featured reveal" data-categories="data">
+        <div class="card-img-wrap">
+          <img src="./images/data-ab-testing.jpg" alt="Strategic Data Analysis & A/B Testing" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-teal">Featured</span><span class="badge badge-neutral">Global Career Accelerator</span></div>
+            <span class="card-year">Fall 2025</span>
+          </div>
+          <h3 class="card-title">Strategic Data Analysis &amp; A/B Testing</h3>
+          <p class="card-desc">Modeled a controlled A/B test for the Recording Academy validating a 23% CTA conversion lift. Engineered relational data pipelines proving ASICS referred customers drove 104% more revenue ($762K vs. $372K). Executed BART Transit time-series ridership analysis to isolate peak commuter hours.</p>
+          <div class="card-tags"><span class="tag">Excel</span><span class="tag">PivotTables</span><span class="tag">A/B Testing</span><span class="tag">XLOOKUP</span><span class="tag">Time-Series</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="data">
+        <div class="card-img-wrap">
+          <img src="./images/data-viz-capstone.jpg" alt="Data Visualization & Architecture Capstone" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-teal">Data Viz</span><span class="badge badge-neutral">Global Career Accelerator</span></div>
+            <span class="card-year">Fall 2025</span>
+          </div>
+          <h3 class="card-title">Data Visualization &amp; Architecture Capstone</h3>
+          <p class="card-desc">Data consultant for Intel's Sustainability Team — built Tableau dashboards with CASE/WHEN, choropleth mapping, and logarithmic scales. Correlated Super Bowl commercial ROI against TV household ratings via complex data joins.</p>
+          <div class="card-tags"><span class="tag">Tableau</span><span class="tag">Choropleth</span><span class="tag">Data Joins</span><span class="tag">ROI Analysis</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="data">
+        <div class="card-img-wrap">
+          <img src="./images/data-warehousing.jpg" alt="Data Warehousing & Dimensional Modeling" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-teal">SQL + BI</span><span class="badge badge-neutral">GMU Course</span></div>
+            <span class="card-year">Fall 2025</span>
+          </div>
+          <h3 class="card-title">Data Warehousing &amp; Dimensional Modeling</h3>
+          <p class="card-desc">Star-schema data mart with 530+ Olympic medal records and 9 years of population data. Engineered ETL pipelines via T-SQL BULK INSERT. Built a "Medals Per Million" dashboard proving smaller nations outperform superpowers per-capita.</p>
+          <div class="card-tags"><span class="tag">T-SQL</span><span class="tag">SSMS</span><span class="tag">Star Schema</span><span class="tag">ETL</span><span class="tag">Tableau</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="data">
+        <div class="card-img-wrap">
+          <img src="./images/data-predictive-analytics.jpg" alt="Predictive Business Analytics" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-teal">Analytics</span><span class="badge badge-neutral">GMU Courses</span></div>
+            <span class="card-year">2024</span>
+          </div>
+          <h3 class="card-title">Predictive Business Analytics I &amp; II</h3>
+          <p class="card-desc">Applied Excel Solver for linear optimization. Ran hypothesis testing, ANOVA, and multiple regression to forecast business outcomes. Used What-If Analysis, Data Tables, and Goal Seek across large-scale datasets.</p>
+          <div class="card-tags"><span class="tag">Excel Solver</span><span class="tag">ANOVA</span><span class="tag">Regression</span><span class="tag">What-If Analysis</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="data">
+        <div class="card-img-wrap">
+          <img src="./images/data-sportsstore-db.jpg" alt="Relational Database Architecture – SportsStoreDB" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-teal">Database</span><span class="badge badge-neutral">GMU Course</span></div>
+            <span class="card-year">Spring 2025</span>
+          </div>
+          <h3 class="card-title">Relational Database Architecture — SportsStoreDB</h3>
+          <p class="card-desc">Designed a normalized relational schema with primary/foreign key constraints. Executed DDL/DML SQL scripts for table provisioning. Multi-table JOIN queries with aggregate functions for transactional BI reporting.</p>
+          <div class="card-tags"><span class="tag">SQL</span><span class="tag">DDL/DML</span><span class="tag">JOINs</span><span class="tag">Normalization</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== AI & SYSTEMS ===== -->
+  <section class="project-section reveal" data-section="ai-systems" aria-labelledby="sec-ai-title">
+    <div class="section-header">
+      <svg class="section-icon" viewBox="0 0 20 20" fill="none" stroke="var(--color-orange)" stroke-width="1.5" aria-hidden="true">
+        <circle cx="10" cy="10" r="3"/>
+        <path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.22 4.22l1.42 1.42M14.36 14.36l1.42 1.42M4.22 15.78l1.42-1.42M14.36 5.64l1.42-1.42" stroke-linecap="round"/>
+      </svg>
+      <h2 class="section-title" id="sec-ai-title">AI &amp; Systems</h2>
+      <span class="section-count">4 projects</span>
+    </div>
+    <div class="cards-grid">
+
+      <article class="card card-featured reveal" data-categories="ai-systems">
+        <div class="card-img-wrap">
+          <img src="./images/ai-discord-ecosystem.jpg" alt="AI Club Discord Ecosystem" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-orange">In Progress</span><span class="badge badge-neutral">GMU AI Club</span></div>
+            <span class="card-year"><span class="live-dot">Live</span></span>
+          </div>
+          <h3 class="card-title">AI Club Discord Ecosystem &amp; Operations</h3>
+          <p class="card-desc">Architected a full Discord infrastructure for a 100+ member AI club: AI moderation bots (Sapphire, YAGPDB), dynamic self-creating voice channels, private ticketing, self-assignable role systems with interest analytics, automated onboarding DMs, invite tracking, and YouTube upload automation.</p>
+          <div class="card-tags"><span class="tag">Discord</span><span class="tag">Bot Config</span><span class="tag">Automation</span><span class="tag">Community Ops</span><span class="tag">YouTube API</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="ai-systems media">
+        <div class="card-img-wrap">
+          <img src="./images/ai-marketing-pipeline.jpg" alt="AI in Marketing Content Pipeline" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-orange">Workshop</span><span class="badge badge-neutral">AI Club × AMA</span></div>
+            <span class="card-year">April 2026</span>
+          </div>
+          <h3 class="card-title">AI in Marketing Content Pipeline</h3>
+          <p class="card-desc">Co-presented live workshop with AMA. Built automated content pipelines: OpusClip → short-form clips, advanced LLM prompting in Gemini 3.1 Pro and Perplexity Pro, GPU-powered offline media upscaling with BSRGANx4, and cross-platform transfer workflows.</p>
+          <div class="card-tags"><span class="tag">OpusClip</span><span class="tag">LLM Prompting</span><span class="tag">BSRGANx4</span><span class="tag">LocalSend</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="ai-systems">
+        <div class="card-img-wrap">
+          <img src="./images/ai-hackathon-chatbot.jpg" alt="GMU Financial Aid AI Chatbot – PatriotHacks 2023" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-orange">Hackathon</span><span class="badge badge-neutral">PatriotHacks 2023</span></div>
+            <span class="card-year">Oct 2023</span>
+          </div>
+          <h3 class="card-title">GMU Financial Aid AI Chatbot</h3>
+          <p class="card-desc">Built an AI chatbot at PatriotHacks 2023 to help GMU students navigate financial advising questions. Led project management and ideation across a 24-hour hackathon sprint as team project manager.</p>
+          <div class="card-tags"><span class="tag">AI Chatbot</span><span class="tag">Project Mgmt</span><span class="tag">24h Hackathon</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="ai-systems it-infra">
+        <div class="card-img-wrap">
+          <img src="./images/ai-cloud-architecture.jpg" alt="Cloud Enterprise Architecture – AWS & Azure" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-orange">Cloud</span><span class="badge badge-neutral">GMU Course</span></div>
+            <span class="card-year">Spring 2025</span>
+          </div>
+          <h3 class="card-title">Cloud Enterprise Architecture — AWS &amp; Azure</h3>
+          <p class="card-desc">Architected VPCs and Azure VNets with subnets, site-to-site VPN routing, and IAM permissions. Provisioned EC2 VMs with static IP endpoints. Enforced inbound/outbound firewall rules and Zero Trust policies across AWS and Azure.</p>
+          <div class="card-tags"><span class="tag">AWS</span><span class="tag">Azure</span><span class="tag">VPC/VNet</span><span class="tag">IAM</span><span class="tag">Zero Trust</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== MEDIA & CONTENT ===== -->
+  <section class="project-section reveal" data-section="media" aria-labelledby="sec-media-title">
+    <div class="section-header">
+      <svg class="section-icon" viewBox="0 0 20 20" fill="none" stroke="var(--color-purple)" stroke-width="1.5" aria-hidden="true">
+        <rect x="2" y="4" width="16" height="12" rx="2"/>
+        <path d="M8 8l5 2.5L8 13V8z" fill="var(--color-purple)" stroke="none"/>
+      </svg>
+      <h2 class="section-title" id="sec-media-title">Media &amp; Content</h2>
+      <span class="section-count">2 projects</span>
+    </div>
+    <div class="cards-grid">
+
+      <article class="card card-featured reveal" data-categories="media">
+        <div class="card-img-wrap">
+          <img src="./images/media-brand-automotive.jpg" alt="Media Brand – Automotive, Travel & AI Content" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-purple">Ongoing</span><span class="badge badge-neutral">Angad Photography</span></div>
+            <span class="card-year"><span class="live-dot">Live</span></span>
+          </div>
+          <h3 class="card-title">Media Brand — Automotive, Travel &amp; AI Content</h3>
+          <p class="card-desc">Building a media brand across YouTube and Instagram covering automotive culture in the DMV, international travel vlogs, and AI/career content. Produced 10+ automotive event videos and promotional content for Perfection Automotive. Editing in DaVinci Resolve and CapCut AI.</p>
+          <div class="card-tags"><span class="tag">YouTube</span><span class="tag">Instagram</span><span class="tag">DaVinci Resolve</span><span class="tag">CapCut AI</span><span class="tag">Brand Strategy</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="media it-infra">
+        <div class="card-img-wrap">
+          <img src="./images/media-portfolio-site.jpg" alt="Personal Portfolio Website" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-purple">Personal Project</span></div>
+            <span class="card-year">2025–2026</span>
+          </div>
+          <h3 class="card-title">Portfolio Website — Built from Scratch</h3>
+          <p class="card-desc">Multi-page portfolio with HTML, CSS, and vanilla JS. Features: liquid aurora animated background, rotating 3D dot globe, scrolling photo strip, experience accordion, dark/light mode, blog with article modals, LinkedIn post digest, and Voronoi background.</p>
+          <div class="card-tags"><span class="tag">HTML/CSS</span><span class="tag">JavaScript</span><span class="tag">Canvas API</span><span class="tag">Dark Mode</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="media">
+        <div class="card-img-wrap">
+          <img src="./images/media-mcn-broadcast.jpg" alt="On-Air Videographer & News Host – Mason Cable Network" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-purple">Broadcast</span><span class="badge badge-neutral">Mason Cable Network</span></div>
+            <span class="card-year">Jan 2024 – Present</span>
+          </div>
+          <h3 class="card-title">On-Air Videographer &amp; News Host</h3>
+          <p class="card-desc">Live broadcast to 700+ viewers for International Week. Covered the 2025 NAS Oceana Airshow — 5 live interviews and Blue Angels footage. Hosted 3 network broadcasts and recorded 15 on-the-spot interviews at Mason Game Day.</p>
+          <div class="card-tags"><span class="tag">Live Broadcast</span><span class="tag">Field Production</span><span class="tag">Interviewing</span><span class="tag">B-Roll</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== BUSINESS STRATEGY ===== -->
+  <section class="project-section reveal" data-section="strategy" aria-labelledby="sec-strategy-title">
+    <div class="section-header">
+      <svg class="section-icon" viewBox="0 0 20 20" fill="none" stroke="var(--color-blue)" stroke-width="1.5" aria-hidden="true">
+        <path d="M3 17l4-8 3 4 3-6 4 10" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="10" cy="4" r="2"/>
+      </svg>
+      <h2 class="section-title" id="sec-strategy-title">Business Strategy</h2>
+      <span class="section-count">4 projects</span>
+    </div>
+    <div class="cards-grid">
+
+      <article class="card card-featured reveal" data-categories="strategy">
+        <div class="card-img-wrap">
+          <img src="./images/strategy-ibj-capstone.jpg" alt="Digital Transformation Strategy – IBJ True Match Life" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-blue">Case Competition</span><span class="badge badge-neutral">GMU Capstone</span></div>
+            <span class="card-year">Fall 2025</span>
+          </div>
+          <h3 class="card-title">Digital Transformation Strategy — IBJ True Match Life</h3>
+          <p class="card-desc">Directed a 5-member cross-functional team in a comprehensive strategy case for Japan's leading matchmaking agency. Architected a digital pivot and market expansion roadmap, authored the executive presentation script, designed slides, and directed/produced the final video pitch.</p>
+          <div class="card-tags"><span class="tag">Strategy</span><span class="tag">Digital Transformation</span><span class="tag">Case Competition</span><span class="tag">Team Leadership</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="strategy ai-systems">
+        <div class="card-img-wrap">
+          <img src="./images/strategy-gmu-ai-day.jpg" alt="Inaugural GMU AI Day Event Management" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-blue">Event</span><span class="badge badge-neutral">GMU AI Day</span></div>
+            <span class="card-year">April 2026</span>
+          </div>
+          <h3 class="card-title">Inaugural GMU AI Day — End-to-End Management</h3>
+          <p class="card-desc">Unified 7 student organizations for GMU's first AI Day by pitching directly to the Chief AI Officer. Managed a 3-hour programming roster, live AV operations, and marketing campaigns. Coordinated 8-10 orgs for the student exhibition with VP of Mason Dr. Amarda Shehu.</p>
+          <div class="card-tags"><span class="tag">Event Mgmt</span><span class="tag">Cross-Org Leadership</span><span class="tag">AV Production</span><span class="tag">Stakeholder Comms</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="strategy it-infra">
+        <div class="card-img-wrap">
+          <img src="./images/strategy-ms-project.jpg" alt="IT Schedule Optimization – Microsoft Project" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-blue">Project Mgmt</span><span class="badge badge-neutral">GMU Course</span></div>
+            <span class="card-year">Fall 2025</span>
+          </div>
+          <h3 class="card-title">IT Schedule Optimization — Microsoft Project</h3>
+          <p class="card-desc">Built comprehensive enterprise project schedules using MS Project. Produced Gantt charts, network diagrams, critical path analyses, resource allocation reports, and cost-per-task tracking outputs for executive-ready decision-making.</p>
+          <div class="card-tags"><span class="tag">MS Project</span><span class="tag">Gantt Charts</span><span class="tag">Critical Path</span><span class="tag">Resource Allocation</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="strategy it-infra">
+        <div class="card-img-wrap">
+          <img src="./images/strategy-uml-proposal.jpg" alt="Enterprise Systems Design Proposal" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-blue">Systems Design</span><span class="badge badge-neutral">GMU Course</span></div>
+            <span class="card-year">Spring 2026</span>
+          </div>
+          <h3 class="card-title">Enterprise Systems Design Proposal</h3>
+          <p class="card-desc">Authored a comprehensive enterprise system proposal translating stakeholder requirements into iterative specs. Constructed UML diagrams (Use Case, Activity, Sequence) in Microsoft Visio. Optimized SDLC documentation to identify bottlenecks.</p>
+          <div class="card-tags"><span class="tag">UML</span><span class="tag">Microsoft Visio</span><span class="tag">SDLC</span><span class="tag">Requirements Analysis</span></div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ===== IT & INFRASTRUCTURE ===== -->
+  <section class="project-section reveal" data-section="it-infra" aria-labelledby="sec-it-title">
+    <div class="section-header">
+      <svg class="section-icon" viewBox="0 0 20 20" fill="none" stroke="var(--color-success)" stroke-width="1.5" aria-hidden="true">
+        <rect x="2" y="5" width="16" height="10" rx="2"/>
+        <path d="M6 9h2M6 12h6" stroke-linecap="round"/>
+        <circle cx="15" cy="9" r="1" fill="var(--color-success)"/>
+      </svg>
+      <h2 class="section-title" id="sec-it-title">IT &amp; Infrastructure</h2>
+      <span class="section-count">3 projects</span>
+    </div>
+    <div class="cards-grid">
+
+      <article class="card card-featured reveal" data-categories="it-infra">
+        <div class="card-img-wrap">
+          <img src="./images/it-va-star-laptops.jpg" alt="Laptop Refurbishment Program – VA STAR" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-green">Community Impact</span><span class="badge badge-neutral">VA STAR @ GMU</span></div>
+            <span class="card-year">2024–2025</span>
+          </div>
+          <h3 class="card-title">Laptop Refurbishment Program — VA STAR</h3>
+          <p class="card-desc">Led a state-funded IT program scaling distribution from 15 to 50 units/semester. Built automated inventory tracking via Google Forms + Excel, a custom charging station, and weekly M.2 SSD workshops. Coordinated a 22-laptop donation to Oakton High School and expanded outreach to 5 Northern Virginia schools.</p>
+          <div class="card-tags"><span class="tag">Hardware</span><span class="tag">IT Operations</span><span class="tag">Inventory Automation</span><span class="tag">Community Outreach</span></div>
+        </div>
+      </article>
+
+      <article class="card reveal" data-categories="it-infra strategy">
+        <div class="card-img-wrap">
+          <img src="./images/it-capita-breach-audit.jpg" alt="Cybersecurity Incident Analysis – 2023 Capita Breach" width="800" height="450" loading="lazy" decoding="async"/>
+        </div>
+        <div class="card-body">
+          <div class="card-top">
+            <div class="card-badges"><span class="badge badge-green">Security Audit</span><span class="badge badge-neutral">GMU Course</span></div>
+            <span class="card-year">Fall 2025</span>
+          </div>
+          <h3 class="card-title">Cybersecurity Incident Analysis — 2023 Capita Breach</h3>
+          <p class="card-desc">Comprehensive audit of the 2023 Capita Data Breach, mapping a drive-by download attack across 6.6M exposed records. Formulated post-incident risk mitigation strategies focused on network hardening, endpoint security, and GDPR compliance.</p>
+          <div class="card-tags"><span class="tag">Security Audit</span><span class="tag">Threat Analysis</span><span class="tag">GDPR</span><span class="tag">Risk Mitigation</span></div>
+        </div>
+      </article>
+
+
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" role="contentinfo">
+  <div class="site-footer-inner">
+    <p class="footer-text">© 2026 Angad Dhawan &mdash; Leesburg, VA</p>
+    <a href="mailto:dhawanangad@gmail.com" class="footer-link">dhawanangad@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    const btn=document.querySelector('[data-theme-toggle]'),root=document.documentElement;
+    let theme=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+    root.setAttribute('data-theme',theme);
+    function icon(t){
+      if(!btn)return;
+      btn.setAttribute('aria-label','Switch to '+(t==='dark'?'light':'dark')+' mode');
+      btn.innerHTML=t==='dark'
+        ?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+        :'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    }
+    icon(theme);
+    btn&&btn.addEventListener('click',()=>{theme=theme==='dark'?'light':'dark';root.setAttribute('data-theme',theme);icon(theme);});
+  })();
+
+  (function(){
+    const btns=document.querySelectorAll('.filter-btn');
+    const sections=document.querySelectorAll('.project-section');
+    btns.forEach(btn=>btn.addEventListener('click',()=>{
+      const f=btn.getAttribute('data-filter');
+      btns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      sections.forEach(s=>f==='all'?s.removeAttribute('data-hidden'):
+        (s.getAttribute('data-section')===f?s.removeAttribute('data-hidden'):s.setAttribute('data-hidden','true')));
+    }));
+  })();
+
+  (function(){
+    if(!('IntersectionObserver' in window)){document.querySelectorAll('.reveal').forEach(e=>e.classList.add('visible'));return;}
+    const io=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:0.05,rootMargin:'0px 0px -40px 0px'});
+    document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
+  })();
+</script>
+</body>
+</html>
